@@ -5,7 +5,7 @@
       <div class="container">
         <h3>Ver mais animes</h3>
         <div class="blog-cards">
-          <BlogCardVue v-for="(post, index) in sampleBlogCards" :key="index" />
+          <BlogCardVue :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
         </div>
       </div>
     </div>
@@ -43,11 +43,10 @@ export default {
         }
       ],
       sampleBlogCards: [
-        {blogTitle: "Anime Card #1", blogCoverPhoto: "stock-1", blogDate: "November 1 , 2022"},
-        {blogTitle: "Anime Card #2", blogCoverPhoto: "stock-2", blogDate: "November 1 , 2022"},
-        {blogTitle: "Anime Card #3", blogCoverPhoto: "stock-3", blogDate: "November 1 , 2022"},
+        {blogTitle: "Anime Card #1", blogCoverPhoto: "desenho", blogDate: "November 1 , 2022"},
+        {blogTitle: "Anime Card #2", blogCoverPhoto: "animegirl", blogDate: "November 1 , 2022"},
+        {blogTitle: "Anime Card #3", blogCoverPhoto: "olhosazuis", blogDate: "November 1 , 2022"},
         {blogTitle: "Anime Card #4", blogCoverPhoto: "stock-4", blogDate: "November 1 , 2022"},
-        {blogTitle: "Anime Card #5", blogCoverPhoto: "stock-5", blogDate: "November 1 , 2022"},
       ]
     }
   },
