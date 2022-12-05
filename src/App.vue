@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 * {
@@ -55,5 +55,29 @@ export default {
 
 .link-light {
   color: #fff;
+}
+
+.blog-card-wrap {
+  position: relative;
+  padding: 80px 16px;
+  background-color: #f1f1f1;
+  @media (min-width: 500px) {
+    padding: 100px 16px
+  }
+  .blog-cards {
+    display: flex;
+    gap: 32px;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 500px) {
+      grid-template-columns:repeat (2,fr) ;
+    }
+    @media (min-width: 900px) {
+      grid-template-columns:repeat (3,fr) ;
+    }
+    @media (min-width: 1200px) {
+      grid-template-columns:repeat (4,fr) ;
+    }
+  }
 }
 </style>
