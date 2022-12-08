@@ -9,6 +9,14 @@
         </div>
       </div>
     </div>
+    <div class="updates">
+      <div class="container">
+        <h2>Registre-se agora mesmo, e de graça!</h2>
+        <router-link class="rounter-button" to="#">
+          Registrar em Animes On</i>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,8 +24,8 @@
 import BlogPostVue from '@/components/BlogPost.vue';
 import BlogCardVue from '@/components/BlogCard.vue';
 export default {
-  name: "Home", 
-  components: {BlogPostVue, BlogCardVue},
+  name: "Home",
+  components: { BlogPostVue, BlogCardVue },
   data() {
     return {
       sampleBlogPost: [
@@ -43,10 +51,10 @@ export default {
         }
       ],
       sampleBlogCards: [
-        {blogTitle: "Anime Card #1", blogCoverPhoto: "desenho", blogDate: "November 1 , 2022"},
-        {blogTitle: "Anime Card #2", blogCoverPhoto: "animegirl", blogDate: "November 1 , 2022"},
-        {blogTitle: "Anime Card #3", blogCoverPhoto: "olhosazuis", blogDate: "November 1 , 2022"},
-        {blogTitle: "Anime Card #4", blogCoverPhoto: "stock-4", blogDate: "November 1 , 2022"},
+        { blogTitle: "Anime Card #1", blogCoverPhoto: "desenho", blogDate: "November 1 , 2022" },
+        { blogTitle: "Anime Card #2", blogCoverPhoto: "animegirl", blogDate: "November 1 , 2022" },
+        { blogTitle: "Anime Card #3", blogCoverPhoto: "olhosazuis", blogDate: "November 1 , 2022" },
+        { blogTitle: "Anime Card #4", blogCoverPhoto: "stock-4", blogDate: "November 1 , 2022" },
       ]
     }
   },
@@ -61,17 +69,64 @@ export default {
 }
 
 @media(max-width: 1200px) {
-    .home {
-        min-width: 100%;
-        max-width: 350px;
-        flex-direction: column;
-        align-items: center;
+  .home {
+    min-width: 100%;
+    max-width: 350px;
+    flex-direction: column;
+    align-items: center;
+  }
 }
-}
+
 .blog-card-wrap {
-  h3{
+  h3 {
     font-weight: 300;
     font-size: 28px;
+    margin-bottom: 32px;
+  }
+}
+
+.updates {
+  .container {
+    padding: 100px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media(min-width:800px) {
+      padding: 125px 25px;
+      flex-direction: row;
+    }
+
+    .rounter-button {
+      display: flex;
+      background-color: rgba(98, 0, 255, 0.411);
+      border-radius: 20px;
+      font-size: 24px;
+      text-decoration: none;
+      padding: 40px;
+      transition: .5s ease all;
+      &:hover {
+        transform: rotateZ(-1deg) scale(1.01);
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.1) ;
+      }
+      @media(min-width: 800px) {
+        margin-left: auto;
+      }
+    }
+
+    h2 {
+      font-weight: 300;
+      font-size: 32px;
+      max-width: 425px;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+
+      @media (min-width: 800px) {
+        text-align: initial;
+        font-size: 40px;
+      }
+    }
   }
 }
 </style>
