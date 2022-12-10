@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <!-- <BlogPostVue :post="post" v-for="(post,index) in sampleBlogPost" :key="index" /> -->
+    <!-- <BlogPost :post="post" v-for="(post,index) in sampleBlogPost" :key="index" /> -->
     <div class="blog-card-wrap">
       <div class="container">
         <h3>Ver mais animes</h3>
         <div class="blog-cards">
-          <BlogCardVue :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
+          <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
         </div>
       </div>
     </div>
@@ -13,7 +13,7 @@
       <div class="container">
         <h2>Registre-se agora mesmo, e de graça!</h2>
         <router-link class="rounter-button" to="#">
-          Registrar em Animes On</i>
+          Registrar em Animes On
         </router-link>
       </div>
     </div>
@@ -21,11 +21,16 @@
 </template>
 
 <script>
-import BlogPostVue from '@/components/BlogPost.vue';
-import BlogCardVue from '@/components/BlogCard.vue';
+import BlogPost from '@/components/BlogPost.vue';
+import BlogCard from '@/components/BlogCard.vue';
 export default {
   name: "Home",
-  components: { BlogPostVue, BlogCardVue },
+  components: { BlogPost, BlogCard },
+  computed: {
+        sampleBlogCards () {
+            return this.$store.state.sampleBlogCards;
+        },
+    },
   data() {
     return {
       sampleBlogPost: [
@@ -50,12 +55,6 @@ export default {
           blogCoverPhoto: "naruto",
         }
       ],
-      sampleBlogCards: [
-        { blogTitle: "Anime Card #1", blogCoverPhoto: "desenho", blogDate: "November 1 , 2022" },
-        { blogTitle: "Anime Card #2", blogCoverPhoto: "animegirl", blogDate: "November 1 , 2022" },
-        { blogTitle: "Anime Card #3", blogCoverPhoto: "olhosazuis", blogDate: "November 1 , 2022" },
-        { blogTitle: "Anime Card #4", blogCoverPhoto: "stock-4", blogDate: "November 1 , 2022" },
-      ]
     }
   },
 };
