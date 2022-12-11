@@ -2,51 +2,59 @@
 <div class="blog-card-wrap">
     <div class="blog-cards container">
         <div class="toggle-edit">
-            <span>toggle-edit Post</span>
+            <span>Função editor</span>
             <input type="checkbox" v-model="editPost">
+ 
         </div>
             <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
     </div>
 </div>
 </template>
 <script>
+
 import BlogCard from "@/components/BlogCard.vue"
+
 export default {  
-    components: { BlogCard },
     name: "Blogs",
+    components: { BlogCard},
     computed: {
         sampleBlogCards () {
             return this.$store.state.sampleBlogCards;
         },
-    }
+        editPost: {
+            get() {
+                return this.$store.state.editPost 
+            },
+            set(playload) {
+                this.$store.commit("toggleEditPost", playload);
+            }
+        }
+    },
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
+.blog-cards{
+    position: relative;
+
+    .toggle-edit {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: -70px;
+        right: 0;
+    }
+    span {
+        margin-right: 14px;
+    }
+}
+
 input{
     position: relative;
-    border: none;
     background: rgb(255, 255, 255);
-    outline: none;
     width: 80px;
     height: 30px;
     border-radius: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.1) ;
 }
-input::before {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-    top: 0;
-    right: 0;
-    background: #303030;
-    transition: 750ms ease all;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.1) ;
-}
-input:checked {
-    background: #fff;
-    left: 53px;
-}
+
     
 </style>

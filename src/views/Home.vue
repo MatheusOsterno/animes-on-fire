@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <CheckBox />
     <!-- <BlogPost :post="post" v-for="(post,index) in sampleBlogPost" :key="index" /> -->
     <div class="blog-card-wrap">
       <div class="container">
