@@ -1,7 +1,7 @@
 <template >
     <div class="blog-card">
-        <div class="icons">
-            <div class="icon">
+        <div  v-show="editPost" class="icons">
+            <div  class="icon">
                 <i class="edit fa-solid fa-file-pen"></i>
             </div>
             <div class="icon">
@@ -22,6 +22,11 @@
 export default {
     name: "BlogCardVue",
     props: ["post"],
+    computed: {
+        editPost() {
+            return this.$store.state.editPost
+        }
+    },
 }
 </script>
 <style lang="scss">

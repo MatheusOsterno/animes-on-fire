@@ -17,21 +17,35 @@
                 </div>
             </div>
             <router-link class="forgot-password" :to="{ name:'ForgotPassword'}">Esqueci minha senha</router-link>
-            <button class="logar">Logar</button>
+            <button class="logar" @click.prevent="signIn">Entrar</button>
             <div class="angle"></div>
         </form>
         <div class="background"></div>
     </div>
 </template>
 <script>
+
 export default {
     name: "Login",
     data() {
         return {
             email: null,
             senha: null,
-        }
-    }
+        };
+    },
+    methods: {
+        signIn() {
+            firebase.auth().signInEmailAndPassword(this.email, this.password).then(() => {
+                this.$router.push({ name: "Home"})
+                this.error = false;
+                this.erroMsg = ""
+                console.log(firebase.auth().correntUser.uid)
+            }).catch(err => {
+                this.error = true;
+                this.erroMsg = err.message;
+            })
+        },
+    },
 }
 </script>
 <style lang="scss">
@@ -91,10 +105,11 @@ export default {
                 margin-bottom: 8px;
 
                 input {
-                    width: 100%;
+                    width: 90%;
                     border: none;
                     background-color: #f2f7f6;
                     padding: 4px 4px 4px 3px;
+                    padding-left: 10px;
                     height: 50px;
 
                     &:focus {
@@ -105,7 +120,8 @@ export default {
                 .icon {
                     width: 12px;
                     position: absolute;
-                    left: 6px;
+                    right: 6px;
+                    margin: 20px;
                 }
             }
         }
@@ -128,7 +144,10 @@ export default {
 
 input::placeholder {
     padding-left: 30px;
+    margin-left: 50px;
+    text-size-adjust: 20px;
 }
+
 
 .logar {
     width: 100px;
@@ -152,7 +171,7 @@ input::placeholder {
     width: 70px;
     height: 101%;
     right: -30px;
-    z-index: 2;
+
     @media (min-width: 900px) {
         display: initial;
     }
@@ -161,8 +180,6 @@ input::placeholder {
     display: none;
     align-items: center;
     flex: 2;
-
-    z-index: 1;
     background-size: cover;
     background-image: url("@/assets/wallpapers/animecena.jpg");
     width: 100%;
