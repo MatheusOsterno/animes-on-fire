@@ -1,5 +1,5 @@
 # anime-on-fire
-Projeto
+Projeto em andamento
 
 ## Project setup
 ```
