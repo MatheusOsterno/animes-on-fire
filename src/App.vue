@@ -1,9 +1,9 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <Navigation />
+      <Navigation v-if="!navigation" />
       <router-view />
-      <FooterVue />
+      <FooterVue v-if="!navigation" />
     </div>
   </div>
 </template>
@@ -14,14 +14,23 @@ import FooterVue from './components/Footer.vue';
 
 export default {
   name: "app",
-  components: {Navigation, FooterVue},
+  components: { Navigation, FooterVue },
   data() {
-    return {};
+    return {
+      navigation: null,
+    };
   },
-  created() {},
-  mounted() {},
+  created() {
+    console.log(firebase.auth().currentUser);
+    this.checkRoute();
+  },
+  mounted() { },
   methods: {},
-  watch: {},
+  watch: {
+    $route() {
+      this.checkRoute();
+    }
+  },
 };
 </script>
 
@@ -68,41 +77,49 @@ export default {
   @media (max-width: 500px) {
     padding: 100px 16px
   }
+
   .blog-cards {
     display: flex;
     gap: 32px;
     grid-template-columns: 1fr;
 
     @media (max-width: 500px) {
-      grid-template-columns:repeat (2,fr) ;
+      grid-template-columns: repeat (2, fr);
     }
+
     @media (min-width: 900px) {
-      grid-template-columns:repeat (3,fr) ;
+      grid-template-columns: repeat (3, fr);
     }
+
     @media (max-width: 1200px) {
-      grid-template-columns:repeat (4,fr) ;
+      grid-template-columns: repeat (4, fr);
     }
   }
 }
 
 .blog-card-wrap {
   position: relative;
-  padding:80px 16px;
+  padding: 80px 16px;
   background-color: #f1f1f1;
+
   @media(max-width: 500px) {
     padding: 100px 16px;
   }
+
   .blog-cards {
     display: grid;
     gap: 32px;
     grid-template-columns: 1fr;
-    @media(min-width: 500px){
+
+    @media(min-width: 500px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    @media(min-width: 900px){
+
+    @media(min-width: 900px) {
       grid-template-columns: repeat(3, 1fr);
     }
-    @media(min-width: 1200px){
+
+    @media(min-width: 1200px) {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -124,9 +141,10 @@ button .router-button {
   }
 
   &:hover {
-    background-color: rgba(48,48,48, 0.7);
+    background-color: rgba(48, 48, 48, 0.7);
   }
 }
+
 .button-ghost {
   color: #000;
   padding: 0;
@@ -135,12 +153,13 @@ button .router-button {
   font-size: 15px;
   font-weight: 500;
   background-color: transparent;
+
   @media (min-width: 700px) {
     margin-top: 0;
     margin-left: auto;
   }
 
-  i{
+  i {
     margin-left: 8px;
   }
 }
@@ -151,9 +170,15 @@ button .router-button {
   color: #fff;
 }
 
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: red;
+}
+
 .botton-inactive {
   pointer-events: none !important;
   cursor: none !important;
-  background-color: rgba(128,128,128,0.5) !important;
+  background-color: rgba(128, 128, 128, 0.5) !important;
 }
 </style>
