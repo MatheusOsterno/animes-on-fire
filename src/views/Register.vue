@@ -2,7 +2,7 @@
 <div class="form-wrap">
         <form class="register">
             <p class="login-register">
-                Vocé já tem conta ?
+                Vocé já tem conta na Anime On Fire ?
                 <router-link class="router-link" :to="{ name : 'Login' }" >Login</router-link>
             </p>
             <h2>Crie sua conta</h2>
