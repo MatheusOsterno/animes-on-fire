@@ -10,7 +10,6 @@
 <script>
 import Navigation from '@/components/Navegation.vue'
 import FooterVue from './components/Footer.vue';
-
 export default {
   name: "app",
   components: { Navigation, FooterVue },
