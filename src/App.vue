@@ -70,7 +70,6 @@ export default {
   padding: 80px 16px;
   background-color: #f1f1f1;
 
-
   @media (max-width: 500px) {
     padding: 100px 16px
   }
