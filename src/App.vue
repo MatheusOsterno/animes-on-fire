@@ -1,4 +1,5 @@
 <template>
+
   <div class="app-wrapper">
     <div class="app">
       <Navigation v-if="!navigation" />
@@ -6,6 +7,7 @@
       <FooterVue v-if="!navigation" />
     </div>
   </div>
+  
 </template>
 <script>
 import Navigation from '@/components/Navegation.vue'
