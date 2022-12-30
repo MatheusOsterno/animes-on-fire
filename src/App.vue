@@ -6,6 +6,8 @@
       <FooterVue v-if="!navigation" />
     </div>
   </div>
+  
+  
 </template>
 <script>
 import Navigation from '@/components/Navegation.vue'
